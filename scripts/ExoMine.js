@@ -15,6 +15,11 @@ export const ExoMine = () => {
                 Choose a mine ${Mines()}
             </div>
         </section>
+        <section id="mine--inventory">
+            <div id="mine--header">
+                <h2>Facility Minerals</h2>
+            </div>
+        </section>
         <section id="cart">
             <h3>
                 Space Cart
