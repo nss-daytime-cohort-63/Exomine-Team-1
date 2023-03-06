@@ -11,9 +11,9 @@ const database = {
         { id: 8, name: "Jeremy Myers", colonyId: 1, isActive: false }
     ],
     colonies: [
-        { id: 1, name: "Europa Minerals" },
-        { id: 2, name: "Colony Minerals" },
-        { id: 3, name: "Mars Minerals" }
+        { id: 1, name: "Europa" },
+        { id: 2, name: "Earth" },
+        { id: 3, name: "Mars" }
     ],
     colonyInventory: [
         {  
