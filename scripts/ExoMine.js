@@ -15,7 +15,13 @@ export const ExoMine = () => {
             </div>
         </section>
         <section id="cart">
-        Cart function goes here
+            <h3>
+                Space Cart
+            </h3>
+            <button id="purchase">
+                Purchase Mineral
+            </button>
+        Cart refresh function goes here
         </section>
     `
 
