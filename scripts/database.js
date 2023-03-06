@@ -1,4 +1,5 @@
 const database = {
+    // cg's objects for governors, colonies, and empty colony inventory
     governors: [
         { id: 1, name: "Nic Lahde", colonyId: 1, isActive: true },
         { id: 2, name: "Jason Harris", colonyId: 3, isActive: true },
@@ -21,6 +22,18 @@ const database = {
     ],
     transientState: {}
 }
+
+
+// cg's getters for governors and colonies
+export const getGovernors = () => {
+    return database.governors.map(governor => ({...governor}))
+}
+
+export const getColonies = () => {
+    return database.colonies.map(colony => ({...colony}))
+}
+
+
 
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
