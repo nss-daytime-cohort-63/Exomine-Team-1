@@ -8,10 +8,10 @@ export const ExoMine = () => {
             Cullen's Estate Sale
         </h1>
         <section id="selectors">
-            <div id="colony--select">
+            <div id="colony--select" class="selector">
                 Choose a governor ${Governors()}
             </div>
-            <div id="mine--select">
+            <div id="mine--select" class="selector">
                 Choose a mine ${Mines()}
             </div>
         </section>
@@ -22,7 +22,6 @@ export const ExoMine = () => {
             <button id="purchase">
                 Purchase Mineral
             </button>
-        Cart refresh function goes here
         </section>
     `
 
