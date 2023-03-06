@@ -40,6 +40,14 @@ const database = {
     ],
     currentOrder: {}
 }
+// cg's getters for governors and colonies
+export const getGovernors = () => {
+    return database.governors.map(governor => ({...governor}))
+}
+
+export const getColonies = () => {
+    return database.colonies.map(colony => ({...colony}))
+}
 
 export const setMine = (mineId) => {
     database.currentOrder.selectedMine = mineId
