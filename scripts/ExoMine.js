@@ -1,15 +1,19 @@
-
+import { Mines } from "./MiningFacilities.js";
 
 //Query the document and find the container ID
 export const ExoMine = () => {
     const html = `
         <h1>
-            Marketplace for Attractive People
+            Cullen's Estate Sale
         </h1>
-        <div id="selectors">
-        Colonies/Governors function goes here.
-        Mines function goes here
-        </div>
+        <section id="selectors">
+            <div id="colony--select">
+                Colonies/Governors function goes here.
+            </div>
+            <div id="mine--select">
+                ${Mines()}
+            </div>
+        </section>
         <section id="cart">
         Cart function goes here
         </section>
