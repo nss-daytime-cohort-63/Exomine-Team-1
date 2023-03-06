@@ -10,11 +10,11 @@ const database = {
         {}
     ],
     minerals:[
-        {id:1,name:"vibranium"},
-        {id:2,name:"adamantium"},
-        {id:3,name:"unobtainium"},
-        {id:4,name:"mythril"},
-        {id:5,name:"kryptonite"},
+        {id:1,name:"Vibranium"},
+        {id:2,name:"Adamantium"},
+        {id:3,name:"Unobtainium"},
+        {id:4,name:"Mythril"},
+        {id:5,name:"Kryptonite"},
         {id:6,name:"Pym particles"}
     ],
     transientState: {}
