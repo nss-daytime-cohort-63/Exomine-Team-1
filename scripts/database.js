@@ -7,7 +7,19 @@ const database = {
         {id:5,name:"Super Happy Fun Mining for Happy Workers and Not Slaves", isActive:false}
     ],
     mineInventory:[
-        {}
+        {id:1,mineId:1,mineralId:2,quantity:208},
+        {id:2,mineId:1,mineralId:1,quantity:5},
+        {id:3,mineId:2,mineralId:3,quantity:102},
+        {id:4,mineId:2,mineralId:5,quantity:25},
+        {id:5,mineId:3,mineralId:4,quantity:44},
+        {id:6,mineId:3,mineralId:5,quantity:12},
+        {id:7,mineId:3,mineralId:6,quantity:4},
+        {id:8,mineId:3,mineralId:1,quantity:16},
+        {id:9,mineId:4,mineralId:6,quantity:53},
+        {id:10,mineId:4,mineralId:3,quantity:7},
+        {id:11,mineId:4,mineralId:5,quantity:14},
+        {id:12,mineId:5,mineralId:2,quantity:26},
+        {id:13,mineId:5,mineralId:3,quantity:43},
     ],
     minerals:[
         {id:1,name:"Vibranium"},
@@ -60,7 +72,9 @@ export const getMines = () => {
 export const getMineral = () => {
     return database.minerals.map(mineral => ({...mineral}))
 }
-
+export const getMineInventory = () => {
+    return database.mineInventory.map(mineInventory => ({...mineInventory}))
+}
 export const purchaseMineral = () => {
 
         // Broadcast custom event to entire documement so that the
