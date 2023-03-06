@@ -1,4 +1,5 @@
 import { Mines } from "./MiningFacilities.js";
+import { Governors } from "./Colonies.js";
 
 //Query the document and find the container ID
 export const ExoMine = () => {
@@ -8,10 +9,10 @@ export const ExoMine = () => {
         </h1>
         <section id="selectors">
             <div id="colony--select">
-                Colonies/Governors function goes here.
+                Choose a governor ${Governors()}
             </div>
             <div id="mine--select">
-                ${Mines()}
+                Choose a mine ${Mines()}
             </div>
         </section>
         <section id="cart">
