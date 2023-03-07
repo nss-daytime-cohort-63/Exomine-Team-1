@@ -53,29 +53,3 @@ document.addEventListener("change", (event) => {
         }
     }
 })
-
-
-
-
-
-
-// for (const colony of allColonies) {
-//     for (const governor of governors) {
-//         if (governorId === governor.id) {
-            
-//         }
-//     }
-//     if (colony.id === governor.colonyId) {
-//         governorColony = colony
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
