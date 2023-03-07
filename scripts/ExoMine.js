@@ -19,6 +19,7 @@ export const ExoMine = () => {
             <div id="mine--header">
                 <h2>Facility Minerals</h2>
             </div>
+            <div id="mine--inventoryDisplay"></div>
         </section>
         <section id="cart">
             <h3>
