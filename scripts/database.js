@@ -65,6 +65,40 @@ export const setMine = (mineId) => {
     database.currentOrder.selectedMine = mineId
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
+export const setMineral = (mineralId) => {
+    database.currentOrder.selectedMineral = mineralId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+export const setColonyInventoryId = (colonyInvId) => {
+    database.currentOrder.selectedColonyInventory = colonyInvId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+export const setMineInventoryId = (mineInvId) => {
+    database.currentOrder.selectedMineInventory = mineInvId
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
+export const addCustomOrder = () => {
+    // Copy the current state of user choices
+    const newOrder = {...database.currentOrder}
+
+    // Add a new primary key to the object
+    if(database.colonyInventory.length === 0){
+        newOrder.id = 1
+    } else{
+        const lastIndex = database.colonyInventory.length - 1
+        newOrder.id = database.colonyInventory[lastIndex].id + 1
+    
+    }
+    // Add the new order object to custom orders state
+    database.colonyInventory.push(newOrder)
+
+    // Reset the temporary state for user choices
+    database.currentOrder = {}
+
+    // Broadcast a notification that permanent state has changed
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
 
 export const getMines = () => {
     return database.mines.map(mine => ({...mine}))
