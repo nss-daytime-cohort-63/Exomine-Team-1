@@ -1,46 +1,81 @@
-import{ addCustomOrder, getColonies, getMines, getMineral} from "./database.js"
-const findMine = (mineId) => {
+import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, getMineInventory, getCurrentOrder } from "./database.js"
+const findMineInventory = (mineId) => {
     const mines = getMines()
+    const mineInventories = getMineInventory()
     let currentMine = null
+    let currentMineInventory = null
     for (const mine of mines) {
         // Iterate through the mines to match the mineId with the mine.id
         if (mine.id === mineId) {
             // assign that mine to the currentMine
             currentMine = mine
+            for (const mineInventory of mineInventories) {
+                if (currentMine.id === mineInventory.mineId) {
+                    currentMineInventory = mineInventory
+                }
+            }
         }
     }
-    return currentMine
+    return currentMineInventory
 }
-const findColony = (colonyId) =>{
+const findMatchingColonyInventory = (colonyId) => {
     const colonies = getColonies()
+    const colonyInventories = getColonyInventory()
     let currentColony = null
+    let currentColonyInventory = null
     for (const colony of colonies) {
         if (colonyId === colony.id) {
             // assign that colony to currentColony
             currentColony = colony
+            if (colonyInventories.length === 0) {
+                addCustomOrder()
+                return null
+            } else {
+                for (const colonyInventory of colonyInventories) {
+                    if (currentColony.id === colonyInventory.selectedColony) {
+                        currentColonyInventory = colonyInventory
+                    }
+                    else {
+                        addCustomOrder()
+                        return null
+                    }
+                }
+            }
+
         }
     }
-    return currentColony
+    return currentColonyInventory
 }
 
-const findMineral = (mineralId) => {
-    const minerals = getMineral()
-    let currentMineral = null
-    for (const mineral of minerals) {
-        if (mineralId === mineral.id) {
-            // assign that mineral to currentMineral
-            currentMineral = mineral
-        }
-    }
+// const findMineral = (mineralId) => {
+//     const minerals = getMineral()
+//     let currentMineral = null
+//     for (const mineral of minerals) {
+//         if (mineralId === mineral.id) {
+//             // assign that mineral to currentMineral
+//             currentMineral = mineral
+//         }
+//     }
 
-    return currentMineral
+//     return currentMineral
+// }
+
+export const purchaseButton = () => {
+    document.addEventListener(
+        "click", (clickEvent) => {
+            const itemClicked = clickEvent.target
+            const currentOrder = getCurrentOrder()
+            if (itemClicked.id.startsWith("purchase")) {
+                let seller = findMineInventory(currentOrder.selectedMine)
+                let buyer = findMatchingColonyInventory(currentOrder.selectedColony)
+                // let product = findMineral(currentOrder.selectedMineral)
+                if (buyer === null) {
+                    seller.quantity = seller.quantity - 1
+                } else {
+                    buyer.quantity+=1
+                    seller.quantity = seller.quantity - 1
+                }
+            }
+        }
+    )
 }
-
-export const purchaseButton = () => {document.addEventListener(
-    "click", (clickEvent) => {  
-        const itemClicked = clickEvent.target      
-        if (itemClicked.id.startsWith("purchase")){
-            addCustomOrder()
-        }
-    }
-)  }
