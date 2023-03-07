@@ -89,6 +89,7 @@ export const addCustomOrder = () => {
         newOrder.id = database.colonyInventory[lastIndex].id + 1
     
     }
+    newOrder.quantity = 1
     // Add the new order object to custom orders state
     database.colonyInventory.push(newOrder)
 
