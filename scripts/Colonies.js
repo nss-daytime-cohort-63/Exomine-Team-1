@@ -1,4 +1,4 @@
-import { getGovernors, getColonies } from "./database.js";
+import { getGovernors, getColonies, setColonyId } from "./database.js";
 
 const governors = getGovernors()
 const colonies = getColonies()
@@ -52,6 +52,7 @@ document.addEventListener("change", (event) => {
         } else {
             // else assigned currentColony to the function detailed above to get the selected governor's assigned colony
             let currentColony = findColony(selectedGovernorId, colonies)
+            setColonyId(currentColony.id)
             // show the current colony's name + Minerals as a header
             document.querySelector("#colony--header").innerHTML = `<h2>${currentColony.name} Minerals</h2>`
 
