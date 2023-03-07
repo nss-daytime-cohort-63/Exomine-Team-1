@@ -8,31 +8,36 @@ export const ExoMine = () => {
             Cullen's Estate Sale
         </h1>
         <section id="selectors">
-            <div id="colony--select">
+            <div id="colony--select" class="selector">
                 Choose a governor ${Governors()}
-                <div id="colony--header">
-                    <h2>Colony Minerals</h2>
-                </div>
+                    <div id="colInventory--wrapper">
+                        <div id="colony--header">
+                            <h2>Colony Minerals</h2>
+                        </div>
+                        <div id="colony--inventory"></div>
+                    </div>
             </div>
-            <div id="mine--select">
+            <div id="mine--select" class="selector">
                 Choose a mine ${Mines()}
             </div>
         </section>
         <section id="mine--inventory">
-            <div id="mine--header">
-                <h2>Facility Minerals</h2>
+                <div id="mineralsDiv">
+                    <div id="mine--header">
+                        <h2>Facility Minerals</h2>
+                    </div>
+            <div id="mine--inventoryDisplay"></div>
             </div>
+            <section id="cart">
+                <h3>
+                    Space Cart
+                </h3>
+                <button id="purchase">
+                    Purchase Mineral
+                </button>
+            </section>
             <div id="mine--inventoryDisplay">
             </div>
-        </section>
-        <section id="cart">
-            <h3>
-                Space Cart
-            </h3>
-            <button id="purchase">
-                Purchase Mineral
-            </button>
-        Cart refresh function goes here
         </section>
     `
 

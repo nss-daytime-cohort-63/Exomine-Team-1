@@ -1,0 +1,69 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(gainsboro, dimgray);
+}
+h1, h2, h3{
+    font-family: 'Genos', sans-serif;
+    color: rgb(22, 58, 90);
+    font-style: italic;
+}
+h3{
+    font-size: 1.6em;
+}
+section{
+    font-family: 'Domine', sans-serif;
+}
+.selector{
+    margin-bottom: 1.75rem;
+}
+#mine--inventory{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+}
+#mineralsDiv{
+    border: dashed;
+    border-top-left-radius: 12%;
+    border-bottom-right-radius: 35%;
+    width: 70%;
+    background-color: rgb(240, 240, 240);
+}
+#cart{
+    border: dashed;
+    width: 25%;
+    height: auto;
+    text-align: center;
+    border-radius: 12%;
+    background-color: rgb(240, 240, 240);
+}
+#purchase{
+    background-color: rgba(255, 209, 5, 0.178);
+    font-family: 'Domine', sans-serif;
+    color: rgb(22, 58, 90);
+    font-size: 1.12em;
+    height: 50px;
+    width: 90%;
+    border: solid black 2px;
+    border-radius: 30%;
+    margin-bottom: 5%;
+}
+#mine--inventory > #mineralsDiv > #mine--header > h2{
+    text-align: center;
+    font-size: 2.3em;
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+#colInventory--wrapper{
+    width: 25%;
+    float: right;
+    clear: both;
+    margin-top: 0;
+    border: dashed;
+    border-radius: 12%;
+    background-color: rgb(240, 240, 240);
+}
+#colony--header > h2{
+    text-align: center;
+    margin-top: 0;
+}
