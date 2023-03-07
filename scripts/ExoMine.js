@@ -10,7 +10,9 @@ export const ExoMine = () => {
         <section id="selectors">
             <div id="colony--select">
                 Choose a governor ${Governors()}
-                <div id="colony--header"></div>
+                <div id="colony--header">
+                    <h2>Colony Minerals</h2>
+                </div>
             </div>
             <div id="mine--select">
                 Choose a mine ${Mines()}
@@ -21,7 +23,6 @@ export const ExoMine = () => {
                 <h2>Facility Minerals</h2>
             </div>
             <div id="mine--inventoryDisplay">
-                <h2>Colony Minerals</h2>
             </div>
         </section>
         <section id="cart">
