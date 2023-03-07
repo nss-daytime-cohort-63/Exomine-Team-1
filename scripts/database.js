@@ -48,6 +48,9 @@ const database = {
     colonyInventory: [],
     currentOrder: {}
 }
+export const getCurrentOrder = () => {
+    return database.currentOrder
+}
 // cg's getters for governors and colonies
 export const getGovernors = () => {
     return database.governors.map(governor => ({...governor}))
@@ -88,11 +91,17 @@ export const addCustomOrder = () => {
     }
     newOrder.quantity = 1
     // Add the new order object to custom orders state
+    //delete database.currentOrder.selectedMine
     database.colonyInventory.push(newOrder)
 
     // Reset the temporary state for user choices
+    const currentMineralId = database.currentOrder.selectedMineral;
+    const currentColonyId = database.currentOrder.selectedColony;
+    const currentMineId = database.currentOrder.selectedMine;
     database.currentOrder = {}
-
+    database.currentOrder.selectedMineral = currentMineralId;
+    database.currentOrder.selectedColony = currentColonyId;
+    database.currentOrder.selectedMine = currentMineId;
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
@@ -104,7 +113,8 @@ export const getMineral = () => {
     return database.minerals.map(mineral => ({...mineral}))
 }
 export const getMineInventory = () => {
-    return database.mineInventory.map(mineInventory => ({...mineInventory}))
+    return database.mineInventory
+    //.map(mineInventory => ({...mineInventory}))
 }
 export const purchaseMineral = () => {
 
