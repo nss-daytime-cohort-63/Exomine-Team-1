@@ -45,11 +45,7 @@ const database = {
         { id: 2, name: "Earth" },
         { id: 3, name: "Mars" }
     ],
-    colonyInventory: [
-        {  
-
-        }
-    ],
+    colonyInventory: [],
     currentOrder: {}
 }
 // cg's getters for governors and colonies
@@ -69,8 +65,8 @@ export const setMineral = (mineralId) => {
     database.currentOrder.selectedMineral = mineralId
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
-export const setColonyInventoryId = (colonyInvId) => {
-    database.currentOrder.selectedColonyInventory = colonyInvId
+export const setColonyId = (colonyId) => {
+    database.currentOrder.selectedColony = colonyId
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 export const setMineInventoryId = (mineInvId) => {

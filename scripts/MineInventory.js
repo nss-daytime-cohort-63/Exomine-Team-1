@@ -1,4 +1,4 @@
-import { getMineInventory, getMineral } from "./database.js";
+import { getMineInventory, getMineral, setMineral } from "./database.js";
 const minerals = getMineral()
 const mineInventory = getMineInventory()
 
@@ -20,3 +20,12 @@ export const MineInventory = (currentMine)=>{
     html += "</ul>"
     return html
 }
+document.addEventListener("change", (event) => {
+    
+    if (event.target.name === "mineral") {
+      //Parsing selected value to get the current mineralId
+      let selectedMineralId = parseInt(event.target.value)
+      //Setting the temporary storage to have the matching mineralId
+      setMineral(selectedMineralId)
+    }
+})
