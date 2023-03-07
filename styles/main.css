@@ -2,9 +2,6 @@ body{
     height: 100vh;
     background-image: linear-gradient(gainsboro, dimgray);
 }
-#container{
-    
-}
 h1, h2, h3{
     font-family: 'Genos', sans-serif;
     color: rgb(22, 58, 90);
@@ -57,7 +54,7 @@ section{
     margin-top: 0px;
     margin-bottom: 6px;
 }
-#colony--header{
+#colInventory--wrapper{
     width: 25%;
     float: right;
     clear: both;
