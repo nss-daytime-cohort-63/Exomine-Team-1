@@ -116,3 +116,7 @@ export const purchaseMineral = () => {
         document.dispatchEvent( new CustomEvent("stateChanged") )
     }
 
+// issue #35 - add getter for colonyInventory
+export const getColonyInventory = () => {
+    return database.colonyInventory.map(colonyInventory => ({...colonyInventory}))
+}
