@@ -48,6 +48,9 @@ const database = {
     colonyInventory: [],
     currentOrder: {}
 }
+export const getCurrentOrder = () => {
+    return database.currentOrder.map(currentOrder => ({...currentOrder}))
+}
 // cg's getters for governors and colonies
 export const getGovernors = () => {
     return database.governors.map(governor => ({...governor}))
