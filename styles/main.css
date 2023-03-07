@@ -61,6 +61,7 @@ section{
     margin-top: 0;
     border: dashed;
     border-radius: 12%;
+    background-color: rgb(240, 240, 240);
 }
 #colony--header > h2{
     text-align: center;
