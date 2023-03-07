@@ -5,7 +5,7 @@ import { Governors } from "./Colonies.js";
 export const ExoMine = () => {
     const html = `
         <h1>
-            Cullen's Estate Sale
+            Cullen's Interplanetary Estate Sale
         </h1>
         <section id="selectors">
             <div id="colony--select" class="selector">
