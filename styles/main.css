@@ -11,13 +11,26 @@ h1, h2, h3{
     font-style: italic;
 }
 h3{
-    font-size: 1.4em;
+    font-size: 1.6em;
 }
 section{
     font-family: 'Domine', sans-serif;
 }
 .selector{
     margin-bottom: 1.75rem;
+}
+#mine--inventory{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+}
+#mineralsDiv{
+    border: dashed;
+    border-top-left-radius: 12%;
+    border-bottom-right-radius: 35%;
+    width: 70%;
+    background-color: rgb(240, 240, 240);
 }
 #cart{
     border: dashed;
@@ -37,4 +50,10 @@ section{
     border: solid black 2px;
     border-radius: 30%;
     margin-bottom: 5%;
+}
+#mine--inventory > #mineralsDiv > #mine--header > h2{
+    text-align: center;
+    font-size: 2.3em;
+    margin-top: 0px;
+    margin-bottom: 6px;
 }
