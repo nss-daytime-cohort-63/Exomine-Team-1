@@ -1,3 +1,4 @@
+import { cartUpdate } from "./Cart.js";
 import { getMineInventory, getMineral, setMineral } from "./database.js";
 const minerals = getMineral()
 const mineInventory = getMineInventory()
@@ -27,5 +28,6 @@ document.addEventListener("change", (event) => {
       let selectedMineralId = parseInt(event.target.value)
       //Setting the temporary storage to have the matching mineralId
       setMineral(selectedMineralId)
+      document.querySelector('#cart--inventory').innerHTML = cartUpdate()
     }
 })
