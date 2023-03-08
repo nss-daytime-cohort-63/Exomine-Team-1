@@ -1,12 +1,12 @@
 import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, getMineInventory, getCurrentOrder } from "./database.js"
 const mines = getMines()
 const mineInventories = getMineInventory()
-const currentOrder = getCurrentOrder()
+
 const colonies = getColonies()
 const colonyInventories = getColonyInventory()
 const minerals = getMineral()
 const findMineInventory = (mineId) => {
-
+    const currentOrder = getCurrentOrder()
     let currentMine = null
     let currentMineInventory = null
     for (const mine of mines) {
@@ -24,7 +24,7 @@ const findMineInventory = (mineId) => {
     return currentMineInventory
 }
 const findMatchingColonyInventory = (colonyId) => {
-
+    const currentOrder = getCurrentOrder()
     let currentColony = null
     let currentColonyInventory = null
     for (const colony of colonies) {
@@ -65,11 +65,11 @@ const findMatchingColonyInventory = (colonyId) => {
 // }
 
 export const cartUpdate = () => {
+    const currentOrder = getCurrentOrder()
     let currentMineId = currentOrder.selectedMine
     let currentMineralId = currentOrder.selectedMineral
     let currentMine = null
     let currentMineral = null
-
     for (let mine of mines) {
         if (mine.id === currentMineId) {
             currentMine = mine.name
@@ -89,15 +89,22 @@ export const purchaseButton = () => {
     document.addEventListener(
         "click", (clickEvent) => {
             const itemClicked = clickEvent.target
+            const currentOrder = getCurrentOrder()
             if (itemClicked.id.startsWith("purchase")) {
                 let seller = findMineInventory(currentOrder.selectedMine)
                 let buyer = findMatchingColonyInventory(currentOrder.selectedColony)
                 // let product = findMineral(currentOrder.selectedMineral)
-                if (buyer === null) {
+                if(seller.quantity === 0){
+                    window.alert("Item is out of stock")
+                } 
+                else{ 
+                    if (buyer === null) {
                     seller.quantity = seller.quantity - 1
-                } else {
+                } 
+                    else {
                     buyer.quantity += 1
                     seller.quantity = seller.quantity - 1
+                }
                 }
             }
         }
