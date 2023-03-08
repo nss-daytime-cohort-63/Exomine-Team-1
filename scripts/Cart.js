@@ -60,6 +60,30 @@ const findMatchingColonyInventory = (colonyId) => {
 //     return currentMineral
 // }
 
+export const cartUpdate = () => {
+    let currentOrder = getCurrentOrder()
+    let currentMineId = currentOrder.selectedMine
+    let currentMineralId = currentOrder.selectedMineral
+    let mines = getMines()
+    let minerals = getMineral()
+    let currentMine = null
+    let currentMineral = null
+
+    for (let mine of mines) {
+        if (mine.id === currentMineId) {
+            currentMine = mine.name
+        }
+    }
+    
+    for (let mineral of minerals) {
+        if (mineral.id === currentMineralId) {
+            currentMineral = mineral.name
+        }
+    }
+
+    return `<p>1 ton of ${currentMineral} from ${currentMine}</p>`
+}
+
 export const purchaseButton = () => {
     document.addEventListener(
         "click", (clickEvent) => {

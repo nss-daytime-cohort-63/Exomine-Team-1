@@ -24,11 +24,11 @@ document.addEventListener("change", (event) => {
     let selectedMineId = parseInt(event.target.value)
     //Setting the temporary storage to have the matching mineId
     setMine(selectedMineId)
-    
     //If the selectedMineId is not an actual option, present default name
     if(selectedMineId === 0){
         document.querySelector("#mine--header").innerHTML = `<h2>Facility Minerals</h2> `
         document.querySelector("#mine--inventoryDisplay").innerHTML=""
+        document.querySelector('#cart--inventory').innerHTML = ""
     }else{
       document.querySelector("#mine--inventoryDisplay").innerHTML=MineInventory(selectedMineId)
     }
@@ -39,6 +39,7 @@ document.addEventListener("change", (event) => {
             document.querySelector("#mine--header").innerHTML = `<h2>Facility Minerals for ${mine.name}</h2> `
         }
     }
+    
     }
     
   }
