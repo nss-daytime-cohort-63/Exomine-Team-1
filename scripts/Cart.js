@@ -1,7 +1,12 @@
 import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, getMineInventory, getCurrentOrder } from "./database.js"
+const mines = getMines()
+const mineInventories = getMineInventory()
+const currentOrder = getCurrentOrder()
+const colonies = getColonies()
+const colonyInventories = getColonyInventory()
+const minerals = getMineral()
 const findMineInventory = (mineId) => {
-    const mines = getMines()
-    const mineInventories = getMineInventory()
+
     let currentMine = null
     let currentMineInventory = null
     for (const mine of mines) {
@@ -10,7 +15,7 @@ const findMineInventory = (mineId) => {
             // assign that mine to the currentMine
             currentMine = mine
             for (const mineInventory of mineInventories) {
-                if (currentMine.id === mineInventory.mineId) {
+                if (currentMine.id === mineInventory.mineId && mineInventory.mineralId === currentOrder.selectedMineral) {
                     currentMineInventory = mineInventory
                 }
             }
@@ -19,8 +24,7 @@ const findMineInventory = (mineId) => {
     return currentMineInventory
 }
 const findMatchingColonyInventory = (colonyId) => {
-    const colonies = getColonies()
-    const colonyInventories = getColonyInventory()
+
     let currentColony = null
     let currentColonyInventory = null
     for (const colony of colonies) {
@@ -61,11 +65,8 @@ const findMatchingColonyInventory = (colonyId) => {
 // }
 
 export const cartUpdate = () => {
-    let currentOrder = getCurrentOrder()
     let currentMineId = currentOrder.selectedMine
     let currentMineralId = currentOrder.selectedMineral
-    let mines = getMines()
-    let minerals = getMineral()
     let currentMine = null
     let currentMineral = null
 
@@ -74,21 +75,20 @@ export const cartUpdate = () => {
             currentMine = mine.name
         }
     }
-    
+
     for (let mineral of minerals) {
         if (mineral.id === currentMineralId) {
             currentMineral = mineral.name
         }
     }
 
-    return `<p>1 ton of ${currentMineral} from ${currentMine}</p>`
+    return `<p>1 ton of ${currentMineral} from\n ${currentMine}</p>`
 }
 
 export const purchaseButton = () => {
     document.addEventListener(
         "click", (clickEvent) => {
             const itemClicked = clickEvent.target
-            const currentOrder = getCurrentOrder()
             if (itemClicked.id.startsWith("purchase")) {
                 let seller = findMineInventory(currentOrder.selectedMine)
                 let buyer = findMatchingColonyInventory(currentOrder.selectedColony)
@@ -96,7 +96,7 @@ export const purchaseButton = () => {
                 if (buyer === null) {
                     seller.quantity = seller.quantity - 1
                 } else {
-                    buyer.quantity+=1
+                    buyer.quantity += 1
                     seller.quantity = seller.quantity - 1
                 }
             }
