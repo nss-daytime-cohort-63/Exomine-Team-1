@@ -2,6 +2,7 @@ import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, 
 const findMineInventory = (mineId) => {
     const mines = getMines()
     const mineInventories = getMineInventory()
+    const currentOrder = getCurrentOrder()
     let currentMine = null
     let currentMineInventory = null
     for (const mine of mines) {
@@ -10,7 +11,7 @@ const findMineInventory = (mineId) => {
             // assign that mine to the currentMine
             currentMine = mine
             for (const mineInventory of mineInventories) {
-                if (currentMine.id === mineInventory.mineId) {
+                if (currentMine.id === mineInventory.mineId && mineInventory.mineralId === currentOrder.selectedMineral) {
                     currentMineInventory = mineInventory
                 }
             }
