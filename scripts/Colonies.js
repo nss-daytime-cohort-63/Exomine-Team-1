@@ -1,4 +1,4 @@
-import { getGovernors, getColonies, setColonyId } from "./database.js";
+import { getGovernors, getColonies, setColonyId, getColonyInventory } from "./database.js";
 
 const governors = getGovernors()
 const colonies = getColonies()
@@ -40,6 +40,23 @@ export const findColony = (governorId, colonies) => {
     return governorColony
 }
 
+const renderColonyInventory = (currentColonyObj) => {
+    const currentColonyInventories = getColonyInventory()
+    const inv = currentColonyInventories.filter((inventory) => {
+        return currentColonyObj.id === inventory.selectedColony;
+    });//Finds and returns an array of objects where the ids are all the same as the selected colony's ID
+    let html = ``;
+    if(Array.isArray(inv)){
+        inv.forEach(inventory => {
+            html += `<p>${inventory.selectedColony}</p>`
+        })
+    }
+    else{
+        html += `<p>${inv.selectedColony}</p>`
+    }
+    return html;
+}
+
 // setting the event listener for the dropdown for governors
 document.addEventListener("change", (event) => {
     // targeting governors
@@ -55,7 +72,7 @@ document.addEventListener("change", (event) => {
             setColonyId(currentColony.id)
             // show the current colony's name + Minerals as a header
             document.querySelector("#colony--header").innerHTML = `<h2>${currentColony.name} Minerals</h2>`
-
+            document.querySelector("#colony--inventory").innerHTML = renderColonyInventory(currentColony);
         }
     }
 })
