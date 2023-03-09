@@ -9,7 +9,7 @@ const colonies = getColonies()
 const minerals = getMineral()
 const findMineInventory = (mineId) => {
     const currentOrder = getCurrentOrder()
-    const colonyInventories = getColonyInventory()
+    
     let currentMine = null
     let currentMineInventory = null
     for (const mine of mines) {
@@ -30,6 +30,7 @@ const findMineInventory = (mineId) => {
 let currentColony = null//moved to modular scope
 const findMatchingColonyInventory = (colonyId) => {
     const currentOrder = getCurrentOrder()
+    const colonyInventories = getColonyInventory()
     let currentColonyInventory = null
     for (const colony of colonies) {
         if (colonyId === colony.id) {
