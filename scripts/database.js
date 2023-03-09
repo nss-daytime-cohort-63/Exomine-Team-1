@@ -75,7 +75,7 @@ export const getMineInventory = () => {
 
 // issue #35 - add getter for colonyInventory
 export const getColonyInventory = () => {
-    return database.colonyInventory.map(colonyInventory => ({ ...colonyInventory }))
+    return database.colonyInventory
 }
 
 export const setMine = (mineId) => {
