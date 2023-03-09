@@ -1,11 +1,9 @@
 import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, getMineInventory, getCurrentOrder } from "./database.js"
-import { renderColonyInventory } from "./Colonies.js"
-import { MineInventory } from "./MineInventory.js"
 const mines = getMines()
 const mineInventories = getMineInventory()
 
 const colonies = getColonies()
-const colonyInventories = getColonyInventory()
+
 const minerals = getMineral()
 const findMineInventory = (mineId) => {
     const currentOrder = getCurrentOrder()
@@ -25,10 +23,10 @@ const findMineInventory = (mineId) => {
     }
     return currentMineInventory
 }
-
-let currentColony = null//moved to modular scope
 const findMatchingColonyInventory = (colonyId) => {
     const currentOrder = getCurrentOrder()
+    const colonyInventories = getColonyInventory()
+    let currentColony = null
     let currentColonyInventory = null
     for (const colony of colonies) {
         if (colonyId === colony.id) {
@@ -67,7 +65,6 @@ const findMatchingColonyInventory = (colonyId) => {
 //     return currentMineral
 // }
 
-let currentMineId = 0;
 export const cartUpdate = () => {
     const currentOrder = getCurrentOrder()
     let currentMineId = currentOrder.selectedMine
@@ -99,7 +96,7 @@ export const purchaseButton = () => {
                 let buyer = findMatchingColonyInventory(currentOrder.selectedColony)
                 // let product = findMineral(currentOrder.selectedMineral)
                 if(seller.quantity === 0){
-                    window.alert("Item is out of stock")//When this line is reached, it doesn't actually stop an order from placing.
+                    window.alert("Item is out of stock")
                 } 
                 else{ 
                     if (buyer === null) {
@@ -110,8 +107,6 @@ export const purchaseButton = () => {
                     seller.quantity = seller.quantity - 1
                 }
                 }
-                document.querySelector("#colony--inventory").innerHTML = renderColonyInventory(currentColony);
-                document.querySelector("#mine--inventoryDisplay").innerHTML=MineInventory(currentOrder.selectedMine);
             }
         }
     )
