@@ -1,7 +1,8 @@
-import { getGovernors, getColonies, setColonyId, getColonyInventory } from "./database.js";
+import { getGovernors, getColonies, setColonyId, getColonyInventory, getMineral } from "./database.js";
 
 const governors = getGovernors()
 const colonies = getColonies()
+const minerals = getMineral()
 
 // setting the placeholder and dropdown values for Governors
 export const Governors = () => {
@@ -40,20 +41,69 @@ export const findColony = (governorId, colonies) => {
     return governorColony
 }
 
-const renderColonyInventory = (currentColonyObj) => {
+
+
+export const renderColonyInventory = (currentColonyObj) => {
     const currentColonyInventories = getColonyInventory()
     const inv = currentColonyInventories.filter((inventory) => {
         return currentColonyObj.id === inventory.selectedColony;
     });//Finds and returns an array of objects where the ids are all the same as the selected colony's ID
     let html = ``;
-    if(Array.isArray(inv)){
-        inv.forEach(inventory => {
-            html += `<p>${inventory.selectedColony}</p>`
-        })
-    }
-    else{
-        html += `<p>${inv.selectedColony}</p>`
-    }
+    let stankArray = [];
+    /*
+        We need to figure out a way to sort by mineral ids and then grab the amount from everything that filter returns
+        and add that together, then generate a piece of html to represent that
+    */
+    inv.forEach(inventory => {//We go through every listing in the already colony-filtered list
+        const currentMineral = minerals[inventory.selectedMineral - 1];//Set the current mineral so we can display it
+        stankArray.push(`<p class="${currentMineral.name}">`)
+    })
+    let mythrilAmount = 0;
+    let vibraniumAmount = 0;
+    let adamantiumAmount = 0;
+    let unobtainiumAmount = 0;
+    let kryptoniteAmount = 0;
+    let pymAmount = 0;
+    stankArray.forEach(p =>{
+        if(p.startsWith(`<p class="Mythril">`)){
+            mythrilAmount++;
+        }else if(p.startsWith(`<p class="Vibranium">`)){
+            vibraniumAmount++;
+        }else if(p.startsWith(`<p class="Adamantium">`)){
+            adamantiumAmount++;
+        }else if(p.startsWith(`<p class="Unobtainium">`)){
+            unobtainiumAmount++;
+        }else if(p.startsWith(`<p class="Kryptonite">`)){
+            kryptoniteAmount++;
+        }else if(p.startsWith(`<p class="Pym particles">`)){
+            pymAmount++;
+        }
+    })
+        if(mythrilAmount != 0){
+            html+= `<p class="Mythril">${mythrilAmount} tons of Mythril.`;
+        }
+        if(vibraniumAmount != 0){
+            html+= `<p class="Vibranium">${vibraniumAmount} tons of Vibranium.`;
+        }
+        if(adamantiumAmount != 0){
+            html+= `<p class="Adamantium">${adamantiumAmount} tons of Adamantium.`;
+        }
+        if(unobtainiumAmount != 0){
+            html+= `<p class="Unobtanium">${unobtainiumAmount} tons of Unobtainium.`;
+        }
+        if(kryptoniteAmount != 0){
+            html+= `<p class="Kryptonite">${kryptoniteAmount} tons of Kryptonite.`;
+        }
+        if(pymAmount != 0){
+            html+= `<p class="Pym particles">${pymAmount} tons of Pym particles.`;
+        }
+
+
+
+
+    //     inv.forEach(inventory => {
+    //         html += `<p>${colonies[inventory.selectedColony -1].name} bought ${inventory.quantity} ton(s) of ${minerals[inventory.selectedMineral -1].name}</p>`
+    //     })
     return html;
 }
 

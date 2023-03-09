@@ -1,4 +1,6 @@
 import { addCustomOrder, getColonies, getMines, getMineral, getColonyInventory, getMineInventory, getCurrentOrder } from "./database.js"
+import { renderColonyInventory } from "./Colonies.js"
+import { MineInventory } from "./MineInventory.js"
 const mines = getMines()
 const mineInventories = getMineInventory()
 
@@ -23,9 +25,10 @@ const findMineInventory = (mineId) => {
     }
     return currentMineInventory
 }
+
+let currentColony = null//moved to modular scope
 const findMatchingColonyInventory = (colonyId) => {
     const currentOrder = getCurrentOrder()
-    let currentColony = null
     let currentColonyInventory = null
     for (const colony of colonies) {
         if (colonyId === colony.id) {
@@ -64,6 +67,7 @@ const findMatchingColonyInventory = (colonyId) => {
 //     return currentMineral
 // }
 
+let currentMineId = 0;
 export const cartUpdate = () => {
     const currentOrder = getCurrentOrder()
     let currentMineId = currentOrder.selectedMine
@@ -106,6 +110,8 @@ export const purchaseButton = () => {
                     seller.quantity = seller.quantity - 1
                 }
                 }
+                document.querySelector("#colony--inventory").innerHTML = renderColonyInventory(currentColony);
+                document.querySelector("#mine--inventoryDisplay").innerHTML=MineInventory(currentOrder.selectedMine);
             }
         }
     )
