@@ -99,7 +99,7 @@ export const purchaseButton = () => {
                 let buyer = findMatchingColonyInventory(currentOrder.selectedColony)
                 // let product = findMineral(currentOrder.selectedMineral)
                 if(seller.quantity === 0){
-                    window.alert("Item is out of stock")
+                    window.alert("Item is out of stock")//When this line is reached, it doesn't actually stop an order from placing.
                 } 
                 else{ 
                     if (buyer === null) {
