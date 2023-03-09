@@ -77,3 +77,31 @@ li:before {
 #cart--inventory{
     font-family: "Domine", sans-serif;
 }
+
+.Mythril, .Vibranium, .Adamantium, .Unobtainium, .Kryptonite, .Pym {
+    padding-left: 10px;
+}
+
+.Mythril {
+    color: green;
+}
+
+.Vibranium {
+    color: red;
+}
+
+.Adamantium {
+    color: rebeccapurple;
+}
+
+.Unobtainium {
+    color: orange;
+}
+
+.Kryptonite {
+    color: limegreen
+}
+
+.Pym {
+    color: hotpink;
+}
