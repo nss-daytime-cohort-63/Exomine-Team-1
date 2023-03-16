@@ -29,7 +29,6 @@ const findMineInventory = (mineId) => {
           currentMine.id === mineInventory.mineId &&
           mineInventory.mineralId === currentOrder.selectedMineral
         ) {
-            console.log(currentOrder.selectedMineral)
           currentMineInventory = mineInventory;
         }
       }
@@ -85,7 +84,6 @@ export const cartUpdate = () => {
   const currentOrder = getCurrentOrder();
   let currentMineId = currentOrder.selectedMine;
   let currentMineralId = currentOrder.selectedMineral;
-  console.log(currentMineralId)
   
   if(currentMineralId === null){
     return ""
@@ -114,7 +112,10 @@ export const purchaseButton = () => {
     const itemClicked = clickEvent.target;
     const currentOrder = getCurrentOrder();
     if (itemClicked.id.startsWith("purchase")) {
-      console.log(colonyInventories);
+      if(currentOrder.selectedColony === 0 || currentOrder.selectedColony === undefined){
+        window.alert("Please select a governor");
+      }else{
+
       let seller = findMineInventory(currentOrder.selectedMine);
       let buyer = findMatchingColonyInventory(currentOrder.selectedColony, seller);
 
@@ -133,6 +134,6 @@ export const purchaseButton = () => {
         renderColonyInventory(currentColony);
       document.querySelector("#mine--inventoryDisplay").innerHTML =
         MineInventory(currentOrder.selectedMine);
-    }
+    }}
   });
 };
