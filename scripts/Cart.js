@@ -38,6 +38,7 @@ const findMineInventory = (mineId) => {
   return currentMineInventory;
 };
 
+
 let currentColony = null; //moved to modular scope
 const findMatchingColonyInventory = (colonyId, mineInventory) => {
   const colonyInventories = getColonyInventory();
@@ -78,10 +79,17 @@ const findMatchingColonyInventory = (colonyId, mineInventory) => {
 };
 
 let currentMineId = 0;
+
 export const cartUpdate = () => {
+
   const currentOrder = getCurrentOrder();
   let currentMineId = currentOrder.selectedMine;
   let currentMineralId = currentOrder.selectedMineral;
+  console.log(currentMineralId)
+  
+  if(currentMineralId === null){
+    return ""
+  }
 
   let currentMine = null;
   let currentMineral = null;

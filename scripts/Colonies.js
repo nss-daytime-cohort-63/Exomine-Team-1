@@ -1,4 +1,5 @@
-import { getGovernors, getColonies, setColonyId, getColonyInventory, getMineral } from "./database.js";
+import { cartUpdate } from "./Cart.js";
+import { getGovernors, getColonies, setColonyId, getColonyInventory, getMineral, setMineral, getCurrentOrder } from "./database.js";
 
 const governors = getGovernors()
 const colonies = getColonies()
@@ -69,6 +70,8 @@ document.addEventListener("change", (event) => {
         // parsing the selected value to get the selectedGovernorId
         let selectedGovernorId = parseInt(event.target.value)
         // If the selectedGovernorId is the placeholder (value 0), present placeholder name
+
+
         if (selectedGovernorId === 0) {
             document.querySelector("#colony--header").innerHTML = `<h2>Colony Minerals</h2>`
         } else {
@@ -76,8 +79,21 @@ document.addEventListener("change", (event) => {
             let currentColony = findColony(selectedGovernorId, colonies)
             setColonyId(currentColony.id)
             // show the current colony's name + Minerals as a header
+            
             document.querySelector("#colony--header").innerHTML = `<h2>${currentColony.name} Minerals</h2>`
             document.querySelector("#colony--inventory").innerHTML = renderColonyInventory(currentColony);
+        }
+    }
+})
+
+
+document.addEventListener("change", (event) => {
+    let currentOrder = getCurrentOrder();
+    if (event.target.id === "governor" && currentOrder.selectedMineral != null) {
+        if(document.querySelector("input[name='mineral']:checked").checked === true){
+            document.querySelector("input[name='mineral']:checked").checked = false
+            setMineral(null)
+            document.querySelector('#cart--inventory').innerHTML = cartUpdate()
         }
     }
 })
