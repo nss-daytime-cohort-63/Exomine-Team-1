@@ -16,6 +16,9 @@ section{
 .selector{
     margin-bottom: 1.75rem;
 }
+#mine--and--cart{
+    display:block;
+}
 #mine--inventory{
     display: flex;
     flex-direction: row;
@@ -56,7 +59,9 @@ section{
 }
 #colInventory--wrapper{
     width: 25%;
-    float: right;
+    /* float:right; */
+    display: inline-block;
+    margin-left: 72%;
     clear: both;
     margin-top: 0;
     border: dashed;
@@ -77,7 +82,10 @@ li:before {
 #cart--inventory{
     font-family: "Domine", sans-serif;
 }
-
+#selectors--paragraph{
+    float: left;
+    /* width: 66%; */
+}
 .Mythril, .Vibranium, .Adamantium, .Unobtainium, .Kryptonite, .Pym {
     padding-left: 10px;
 }
