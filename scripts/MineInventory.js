@@ -11,9 +11,11 @@ export const MineInventory = (currentMine)=>{
         if(inventory.mineId === currentMine){
             for(const mineral of minerals){
                 if(mineral.id === inventory.mineralId){
-                    html += `<li>
+                    if(inventory.quantity > 0){
+                        html += `<li>
                         <input type="radio" name="mineral" value="${mineral.id}"/> ${inventory.quantity} tons of ${mineral.name}
                             </li>`
+                        }
                 }
             }
         }
