@@ -90,8 +90,8 @@ document.addEventListener("change", (event) => {
 document.addEventListener("change", (event) => {
     let currentOrder = getCurrentOrder();
     if (event.target.id === "governor" && currentOrder.selectedMineral != null) {
-        if(document.querySelector("input[name='mineral']:checked").checked === true){
-            document.querySelector("input[name='mineral']:checked").checked = false
+        if(document.querySelector("input[name='mineral']").checked === true){
+            document.querySelector("input[name='mineral']").checked = false
             setMineral(null)
             document.querySelector('#cart--inventory').innerHTML = cartUpdate()
         }
