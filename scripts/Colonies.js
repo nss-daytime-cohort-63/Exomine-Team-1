@@ -53,10 +53,10 @@ export const renderColonyInventory = (currentColonyObj) => {
     inv.forEach(order => {//We go through every listing in the already colony-filtered list
         const currentMineral = minerals[order.selectedMineral - 1];//Set the current mineral so we can display it
         if (currentMineral.name !== "Pym particles") {//Checking if the name isnt "Pym particles" because we want a dif class tag
-            html += `<li class="${currentMineral.name}">${order.quantity} tons of ${currentMineral.name}</li>`
+            html += `<li class="${currentMineral.name} mineralsInCart">${order.quantity} tons of ${currentMineral.name}</li>`
         }
         else {//This happens if it is Pym particles
-            html += `<li class="Pym">${order.quantity} tons of ${currentMineral.name}</li>`
+            html += `<li class="Pym mineralsInCart">${order.quantity} tons of ${currentMineral.name}</li>`
         }
     })
     html += "</ul>"
