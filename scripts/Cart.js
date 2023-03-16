@@ -103,7 +103,7 @@ export const cartUpdate = () => {
     }
   }
 
-  return `<p>1 ton of ${currentMineral} from\n ${currentMine}</p>`;
+  return `<p class="cartText">1 ton of ${currentMineral} from \n ${currentMine}</p>`;
 };
 
 export const purchaseButton = () => {

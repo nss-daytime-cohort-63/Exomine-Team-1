@@ -1,11 +1,19 @@
 body{
     height: 100vh;
     background-image: linear-gradient(gainsboro, dimgray);
+    font-weight: 300;
+
 }
 h1, h2, h3{
     font-family: 'Genos', sans-serif;
     color: rgb(22, 58, 90);
     font-style: italic;
+    font-weight: 500;
+}
+#page__title{
+    font-weight:700;
+    font-size: 3em;
+    text-align: center;
 }
 h3{
     font-size: 1.6em;
@@ -16,6 +24,15 @@ section{
 .selector{
     margin-bottom: 1.75rem;
 }
+#facility{
+    text-align: center;
+    width: 50%
+}
+#governor{
+    text-align: center;
+    width: 50%
+}
+
 #mine--and--cart{
     display:block;
 }
@@ -59,9 +76,6 @@ section{
 }
 #colInventory--wrapper{
     width: 25%;
-    /* float:right; */
-    display: inline-block;
-    margin-left: 72%;
     clear: both;
     margin-top: 0;
     border: dashed;
@@ -75,19 +89,34 @@ section{
 }
 ul{
     list-style: none;
+    padding: 0
 }
 li:before {
     content: "👽";
 }
+.facility__mineral{
+    padding-left: 5%;
+}
+
+.cartText{
+    padding: 0px 5px;
+}
+
 #cart--inventory{
     font-family: "Domine", sans-serif;
 }
-#selectors--paragraph{
-    float: left;
-    /* width: 66%; */
+
+#colony--select{
+    display: flex;
+    justify-content: space-between;
 }
-.Mythril, .Vibranium, .Adamantium, .Unobtainium, .Kryptonite, .Pym {
-    padding-left: 10px;
+
+#selectors--paragraph{
+    font-weight: 700;
+    padding-left: 5%;
+}
+.mineralsInCart{
+    text-align: center;
 }
 
 .Mythril {

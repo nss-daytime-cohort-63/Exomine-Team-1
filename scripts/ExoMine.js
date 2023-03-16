@@ -4,7 +4,7 @@ import { Governors } from "./Colonies.js";
 //Query the document and find the container ID
 export const ExoMine = () => {
     const html = `
-        <h1>
+        <h1 id="page__title">
             Cullen's Interplanetary Estate Sale
         </h1>
         <section id="selectors">
@@ -15,7 +15,6 @@ export const ExoMine = () => {
                             <h2>Colony Minerals</h2>
                         </div>
                         <div id="colony--inventory"></div>
-                    </div><div id="mine--select" class="selector">
                 
             </div>
             </div>
