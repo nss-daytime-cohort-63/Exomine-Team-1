@@ -9,18 +9,19 @@ export const ExoMine = () => {
         </h1>
         <section id="selectors">
             <div id="colony--select" class="selector">
-                Choose a governor ${Governors()}
+                <p id="selectors--paragraph">Choose a governor ${Governors()}<br><br>Choose a mine ${Mines()}</p>
                     <div id="colInventory--wrapper">
                         <div id="colony--header">
                             <h2>Colony Minerals</h2>
                         </div>
                         <div id="colony--inventory"></div>
-                    </div>
+                    </div><div id="mine--select" class="selector">
+                
             </div>
-            <div id="mine--select" class="selector">
-                Choose a mine ${Mines()}
             </div>
+            
         </section>
+    <div id="mine--and--cart">
         <section id="mine--inventory">
                 <div id="mineralsDiv">
                     <div id="mine--header">
@@ -41,6 +42,7 @@ export const ExoMine = () => {
             <div id="mine--inventoryDisplay">
             </div>
         </section>
+        </div>
     `
 
     document.querySelector("#container").innerHTML = html;
